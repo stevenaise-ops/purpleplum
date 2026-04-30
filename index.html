@@ -449,6 +449,8 @@ footer{
 }
 
 /* ── CONTACT ── */
+.contact-name-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.contact-name-row{grid-template-columns:1fr}}
 .contact-wrap{
   max-width:540px;margin:0 auto;
   padding:120px 40px 80px;
@@ -475,6 +477,167 @@ textarea{resize:vertical;line-height:1.6}
 .fu{animation:fadeUp .5s ease both}
 .fu1{animation-delay:.08s}.fu2{animation-delay:.16s}.fu3{animation-delay:.24s}.fu4{animation-delay:.32s}
 
+/* ── MOBILE HAMBURGER ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;cursor:pointer;border:none;background:none;
+  padding:4px;border-radius:8px;
+}
+.nav-hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--ink2);border-radius:2px;
+  transition:all .25s;transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile nav drawer */
+.nav-drawer{
+  display:none;
+  position:fixed;top:60px;left:0;right:0;bottom:0;z-index:199;
+  background:rgba(250,249,252,0.98);
+  backdrop-filter:blur(20px);
+  flex-direction:column;
+  padding:24px 24px 40px;
+  gap:4px;
+  overflow-y:auto;
+  border-top:1px solid rgba(0,0,0,0.06);
+}
+.nav-drawer.open{display:flex}
+.nav-drawer a{
+  color:var(--ink);text-decoration:none;font-size:18px;font-weight:500;
+  padding:14px 16px;border-radius:var(--r);
+  border-bottom:1px solid var(--paper3);
+  transition:background .15s;
+}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover{background:var(--paper2)}
+.nav-drawer .drawer-cta{
+  margin-top:16px;background:var(--plum);color:#fff;
+  text-align:center;border-radius:var(--r);border-bottom:none;
+}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+
+/* Tablet — 768–1024px */
+@media(max-width:1024px){
+  nav{padding:0 24px}
+  section{padding:72px 24px}
+  .paths{grid-template-columns:1fr 1fr}
+  .paths .path:last-child{grid-column:1/-1}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .flow-section-wrap{padding:64px 24px}
+  .product-shot{padding:0 24px 64px;max-width:100%}
+}
+
+/* Mobile — max 768px */
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:0 20px;height:56px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-drawer.open{display:flex}
+
+  /* Hero */
+  .hero{padding:88px 24px 48px;min-height:auto}
+  h1{font-size:clamp(36px,10vw,56px);line-height:1.05;letter-spacing:-0.02em}
+  h2{font-size:clamp(26px,7vw,40px);letter-spacing:-0.02em}
+  .hero-sub{font-size:16px;margin-bottom:36px}
+  .hero-glow{width:400px;height:400px;top:-100px}
+
+  /* Audience cards — stack */
+  .audience-split{flex-direction:column;gap:10px;align-items:stretch}
+  .audience-card{min-width:auto;padding:18px 20px}
+  .aud-title{font-size:16px}
+
+  /* Proof */
+  .hero-proof{flex-wrap:wrap;gap:16px;justify-content:center}
+  .proof-divider{display:none}
+
+  /* Product shot */
+  .product-shot{padding:0 16px 48px;margin-top:40px}
+  .product-shot-label{font-size:10px}
+
+  /* Flow section */
+  .flow-section-wrap{padding:48px 20px}
+  .flow-section-header h2{font-size:clamp(24px,6vw,36px)}
+  .flow-section-header .section-sub{font-size:15px}
+  .flow-steps{flex-direction:column;gap:8px}
+  .flow-arrow{transform:rotate(90deg);width:auto;text-align:center}
+  .flow-box{padding:12px 16px;display:flex;align-items:center;gap:12px}
+  .fb-icon{font-size:18px;margin-bottom:0;flex-shrink:0}
+  .fb-name{font-size:13px}
+  .fb-sub{font-size:11px;margin-top:0}
+  .flow-packet-track{margin:12px 0 8px}
+
+  /* Sections */
+  section{padding:56px 20px}
+  section.edge{padding:56px 20px}
+  section.edge .inner{padding:0}
+  .section-sub{font-size:15px}
+
+  /* Partner paths — stack */
+  .paths{grid-template-columns:1fr;gap:14px}
+  .paths .path:last-child{grid-column:auto}
+  .path{padding:24px}
+  .path h3{font-size:18px}
+
+  /* Modules — tighten */
+  .module-row{padding:18px 20px}
+  .mod-icon{width:36px;height:36px;font-size:16px;flex-shrink:0}
+  .mod-name{font-size:14px}
+  .mod-desc{font-size:12px}
+
+  /* Integrations */
+  .integrations{grid-template-columns:1fr}
+  .int-cat{padding:20px}
+
+  /* Stats — 2 col */
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:24px 16px;border-right:none;border-bottom:1px solid var(--paper3)}
+  .stat:nth-child(odd){border-right:1px solid var(--paper3)}
+  .stat:nth-child(3),.stat:nth-child(4){border-bottom:none}
+  .stat-n{font-size:36px}
+
+  /* CTA band */
+  .cta-band{padding:56px 20px}
+  .cta-band h2{font-size:clamp(26px,7vw,40px)}
+  .cta-band p{font-size:15px}
+  .acts{flex-direction:column;gap:10px;align-items:stretch}
+  .btn-white,.btn-ghost{justify-content:center;padding:14px 20px}
+
+  /* Service pages */
+  .sub-hero{padding:88px 20px 48px}
+  .sub-hero h1{font-size:clamp(30px,8vw,48px)}
+  .sub-hero p{font-size:16px}
+  .svc-layout{grid-template-columns:1fr;gap:0;padding:0 20px 64px}
+  .svc-nav{display:none} /* hidden on mobile — content is scrollable */
+  .svc-block{padding:24px 20px}
+  .svc-block h3{font-size:19px}
+  .feat-list li{font-size:13px}
+
+  /* Contact */
+  .contact-wrap{padding:88px 20px 64px}
+  .contact-wrap>div[style*="grid"]{display:flex;flex-direction:column}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr;gap:28px}
+  .f-desc{max-width:none}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+
+/* Small phones — max 480px */
+@media(max-width:480px){
+  h1{font-size:clamp(32px,11vw,48px)}
+  .audience-card{padding:16px 18px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat-n{font-size:30px}
+  .cta-band{padding:48px 16px}
+  section{padding:48px 16px}
+  section.edge{padding:48px 16px}
+}
+
 /* ── LOGO MARK fallback ── */
 .logo-fallback{
   font-family:'Cabinet Grotesk','Neue Montreal',sans-serif;font-size:17px;font-weight:400;
@@ -498,7 +661,18 @@ textarea{resize:vertical;line-height:1.6}
     <li><a href="#" onclick="show('tuum');return false">TUUM Clients</a></li>
     <li><a href="#" onclick="show('contact');return false" class="nav-cta">Get started</a></li>
   </ul>
+  <!-- Mobile hamburger -->
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#" onclick="show('modules');closeMenu();return false">Modules</a>
+  <a href="#" onclick="show('zenus');closeMenu();return false">Zenus White Label</a>
+  <a href="#" onclick="show('tuum');closeMenu();return false">TUUM Clients</a>
+  <a href="#" onclick="show('contact');closeMenu();return false" class="drawer-cta">Get started →</a>
+</div>
 
 
 <!-- ══════════════ HOME ══════════════ -->
@@ -519,7 +693,7 @@ textarea{resize:vertical;line-height:1.6}
     <h1 class="fu fu1">Your fintech,<br><em>fully assembled.</em></h1>
 
     <!-- Subhead: sophisticated, outcome-focused, no hype -->
-    <p class="hero-sub fu fu2">Connect your banking, compliance, and card providers to Purpleplum's orchestration layer — go to market with the reliability and flexibility of modular omnichannel apps trusted worldwide.</p>
+    <p class="hero-sub fu fu2">Purple Plum connects your banking, compliance, and card providers to a configurable front end — so your engineering effort goes into your business, not integration work.</p>
 
     <!-- Dual audience: frames the two distinct buyer situations -->
     <div class="audience-split fu fu3">
@@ -792,7 +966,7 @@ textarea{resize:vertical;line-height:1.6}
     <div class="footer-top">
       <div>
         <div class="f-logo">
-          <img src="https://purpleplumfi.com/assets/pp_logo-8a66d334.png" alt="Purple Plum FI"
+          <img src="pp-logo-color.png" alt="Purple Plum FI"
                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span style="display:none;font-family:'Cabinet Grotesk','Neue Montreal',sans-serif;font-size:16px;color:rgba(255,255,255,0.8)">Purple Plum FI</span>
         </div>
@@ -1081,7 +1255,7 @@ textarea{resize:vertical;line-height:1.6}
     </h1>
     <p style="color:var(--ink2);font-weight:300;margin-bottom:40px;font-size:16px">Share your provider setup, jurisdiction, and target market. We'll review the integration scope and come back with a considered assessment — not a sales pitch.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="contact-name-row">
       <div>
         <label>First name</label>
         <input type="text" placeholder="Alex">
@@ -1117,6 +1291,21 @@ function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
+  closeMenu();
+}
+
+// ── MOBILE MENU ──
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const d=document.getElementById('navDrawer');
+  h.classList.toggle('open');
+  d.classList.toggle('open');
+  document.body.style.overflow=d.classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navDrawer').classList.remove('open');
+  document.body.style.overflow='';
 }
 
 // ── FLOW NODE INTERACTION ──
